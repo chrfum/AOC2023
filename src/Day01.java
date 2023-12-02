@@ -1,7 +1,7 @@
 import java.io.File;
 
 public class Day01 extends AOCDay {
-    public void part1(File in) {
+    public void solve(File in) {
         inputAsList(in);
         int res = 0;
         for (String line : input) {
