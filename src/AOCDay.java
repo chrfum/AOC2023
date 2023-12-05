@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class AOCDay {
     List<String> input = new ArrayList<>();
     List<List<String>> matrix = new ArrayList<>();
+    
     public void inputAsList(File in) {
         try {
             Scanner sc = new Scanner(in);
