@@ -52,7 +52,7 @@ public class Day07 extends AOCDay {
         System.out.println(res);
     }
 
-    public String compare(String h1, String h2, Map<Character, Integer> m) {
+    private String compare(String h1, String h2, Map<Character, Integer> m) {
         int value1 = evaluateFive(h1);
         int value2 = evaluateFive(h2);
         if (value1 > value2) return h1;
@@ -66,7 +66,7 @@ public class Day07 extends AOCDay {
         return "";
     }
 
-    public int evaluateFive(String hand) {
+    private int evaluateFive(String hand) {
         Map<Character, Integer> m = new HashMap<>();
 
         for (Character c : hand.toCharArray()) {
@@ -88,7 +88,7 @@ public class Day07 extends AOCDay {
         return evaluateFour(hand);
     }
 
-    public int evaluateFour(String hand) {
+    private int evaluateFour(String hand) {
         Map<Character, Integer> m = new HashMap<>();
         
         for (Character c : hand.toCharArray()) {
@@ -108,7 +108,7 @@ public class Day07 extends AOCDay {
         return evaluateFull(hand);
     }
 
-    public int evaluateFull(String hand) {
+    private int evaluateFull(String hand) {
         Map<Character, Integer> m = new HashMap<>();
         
         for (Character c : hand.toCharArray()) {
@@ -136,7 +136,7 @@ public class Day07 extends AOCDay {
         return evaluateThree(hand);
     }
 
-    public int evaluateThree(String hand) {
+    private int evaluateThree(String hand) {
         Map<Character, Integer> m = new HashMap<>();
     
         for (Character c : hand.toCharArray()) {
@@ -156,7 +156,7 @@ public class Day07 extends AOCDay {
         return evaluate2Pair(hand);
     }
 
-    public int evaluate2Pair(String hand) {
+    private int evaluate2Pair(String hand) {
         Map<Character, Integer> m = new HashMap<>();
         
         for (Character c : hand.toCharArray()) {
@@ -177,7 +177,7 @@ public class Day07 extends AOCDay {
         return evaluatePair(hand);
     }
 
-    public int evaluatePair(String hand) {
+    private int evaluatePair(String hand) {
         Map<Character, Integer> m = new HashMap<>();
         
         for (Character c : hand.toCharArray()) {
