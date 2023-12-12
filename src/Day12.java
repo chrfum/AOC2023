@@ -39,6 +39,7 @@ public class Day12 extends AOCDay {
             String[] d2 = n2.split(",");
             int[] damaged2 = new int[d2.length];
             for (int i = 0; i < d2.length; i++) damaged2[i] = Integer.parseInt(d2[i]);
+            memo.clear();
             res2 += calculate(s2, damaged2, 0, 0, memo);
 
             sc.close();
