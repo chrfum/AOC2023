@@ -38,7 +38,7 @@ public class Day16 extends AOCDay {
     private int bfs(List<List<String>> matrix, char startDirection, int startI, int startJ) {
         Map<String, Boolean> visited = new HashMap<>();
         ArrayDeque<String> c = new ArrayDeque<>();
-        List<String> stoppers = new ArrayList<>();
+        Map<String, Boolean> stoppers = new HashMap<>();
         c.add(startI+"v"+startJ+"v"+startDirection);
         int res = 0;
 
@@ -55,8 +55,8 @@ public class Day16 extends AOCDay {
             }
                 
             if (get(matrix, i, j) == 'x') continue;
-            if (stoppers.contains(i+"v"+j+"v"+direction)) continue;
-            else stoppers.add(i+"v"+j+"v"+direction);
+            if (stoppers.containsKey(i+"v"+j+"v"+direction)) continue;
+            else stoppers.put(i+"v"+j+"v"+direction, true);
 
             switch (direction) {
                 case 'e':
