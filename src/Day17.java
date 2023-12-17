@@ -5,11 +5,11 @@ import java.util.PriorityQueue;
 
 public class Day17 extends AOCDay {
     
-    static class State implements Comparable<State> {
-        int hl, r, c, dr, dc, n;
+    private class State implements Comparable<State> {
+        int distance, r, c, dr, dc, n;
 
-        State(int hl, int r, int c, int dr, int dc, int n) {
-            this.hl = hl;
+        State(int distance, int r, int c, int dr, int dc, int n) {
+            this.distance = distance;
             this.r = r;
             this.c = c;
             this.dr = dr;
@@ -19,7 +19,7 @@ public class Day17 extends AOCDay {
 
         @Override
         public int compareTo(State other) {
-            return Integer.compare(this.hl, other.hl);
+            return Integer.compare(this.distance, other.distance);
         }
         
         @Override
@@ -46,27 +46,27 @@ public class Day17 extends AOCDay {
     public void solve(File in) {
         inputAsIntMatrix(in);
 
-        Map<State, Boolean> seen = new HashMap<>();
+        Map<State, Boolean> visited = new HashMap<>();
         PriorityQueue<State> pq = new PriorityQueue<>();
         pq.add(new State(0, 0, 0, 0, 0, 0));
         
         while (!pq.isEmpty()) {
             State state = pq.poll();
-            int hl = state.hl, r = state.r, c = state.c, dr = state.dr, dc = state.dc, n = state.n;
+            int distance = state.distance, row = state.r, col = state.c, dr = state.dr, dc = state.dc, n = state.n;
 
-            if (r == intMatrix.size() - 1 && c == intMatrix.get(0).size() - 1 && n >= 4) {
-                System.out.println(hl);
+            if (row == intMatrix.size() - 1 && col == intMatrix.get(0).size() - 1 && n >= 4) {
+                System.out.println(distance);
                 break;
             }
 
-            if (seen.containsKey(state)) continue;
-            seen.put(state, true);
+            if (visited.containsKey(state)) continue;
+            visited.put(state, true);
 
             if (n < 10 && (dr != 0 || dc != 0)) {
-                int nr = r + dr;
-                int nc = c + dc;
+                int nr = row + dr;
+                int nc = col + dc;
                 if (0 <= nr && nr < intMatrix.size() && 0 <= nc && nc < intMatrix.get(0).size()) {
-                    pq.add(new State(hl + intMatrix.get(nr).get(nc), nr, nc, dr, dc, n + 1));
+                    pq.add(new State(distance + intMatrix.get(nr).get(nc), nr, nc, dr, dc, n + 1));
                 }
             }
 
@@ -76,10 +76,10 @@ public class Day17 extends AOCDay {
                     int ndr = direction[0];
                     int ndc = direction[1];
                     if ((ndr != dr || ndc != dc) && (ndr != -dr || ndc != -dc)) {
-                        int nr = r + ndr;
-                        int nc = c + ndc;
+                        int nr = row + ndr;
+                        int nc = col + ndc;
                         if (0 <= nr && nr < intMatrix.size() && 0 <= nc && nc < intMatrix.get(0).size()) {
-                            pq.add(new State(hl + intMatrix.get(nr).get(nc), nr, nc, ndr, ndc, 1));
+                            pq.add(new State(distance + intMatrix.get(nr).get(nc), nr, nc, ndr, ndc, 1));
                         }
                     }
                 }
