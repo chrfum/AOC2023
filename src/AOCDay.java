@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class AOCDay {
     List<String> input = new ArrayList<>();
     List<List<String>> matrix = new ArrayList<>();
+    List<List<Integer>> intMatrix = new ArrayList<>();
     
     public void inputAsList(File in) {
         try {
@@ -26,6 +27,16 @@ public class AOCDay {
             matrix.add(new ArrayList<>());
             for (Character c : input.get(i).toCharArray()) {
                 matrix.get(i).add(Character.toString(c));
+            }
+        }
+    }
+
+    public void inputAsIntMatrix(File in) {
+        inputAsList(in);
+        for (int i = 0; i < input.size(); i++) {
+            intMatrix.add(new ArrayList<>());
+            for (Character c : input.get(i).toCharArray()) {
+                intMatrix.get(i).add(c - '0');
             }
         }
     }
