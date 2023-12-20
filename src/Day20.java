@@ -105,7 +105,7 @@ public class Day20 extends AOCDay {
             next.add(m);
         }
 
-        public void addPrec(String m) {
+        private void addPrec(String m) {
             prec.add(m);
             mem.add("low");
         }
