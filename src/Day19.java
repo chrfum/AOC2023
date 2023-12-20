@@ -122,20 +122,16 @@ public class Day19 extends AOCDay {
                 switch (operation) {
                     case "<":
                         if (val > interval.get(0) && val < interval.get(1)) {
-                            List<Integer> prima = List.of(interval.get(0), val -1);
-                            List<Integer> dopo = List.of(val, interval.get(1));
-                            tempLst.set(idx, prima);
+                            tempLst.set(idx, List.of(interval.get(0), val -1));
                             res += dfs(m, tempLst, dest, xmas);
-                            intervals.set(idx, dopo);
+                            intervals.set(idx, List.of(val, interval.get(1)));
                         }
                         break;
                     case ">":
                         if (val > interval.get(0) && val < interval.get(1)) {
-                            List<Integer> prima = List.of(val+1, interval.get(1));
-                            List<Integer> dopo = List.of(interval.get(0), val);
-                            tempLst.set(idx, prima);
+                            tempLst.set(idx, List.of(val+1, interval.get(1)));
                             res += dfs(m, tempLst, dest, xmas);
-                            intervals.set(idx, dopo);
+                            intervals.set(idx, List.of(interval.get(0), val));
                         }
                         break;
                 }
