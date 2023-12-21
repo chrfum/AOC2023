@@ -35,7 +35,6 @@ public class Day21 extends AOCDay {
             if (visited.containsKey(List.of(i, j))) continue;
             else visited.put(List.of(i, j), true);
 
-            //if (i == startI && j == startJ) System.out.println(distance);
             if (distance != 0 && distance != 1) {
                 if (distances.containsKey(distance)) distances.put(distance, distances.get(distance) + 1);
                 else distances.put(distance, distances.get(distance - 2) + 1);
